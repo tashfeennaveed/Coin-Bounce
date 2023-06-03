@@ -16,6 +16,8 @@ app.use(router);
 
 dbconnect();
 
+app.use('/storage', express.static('storage'));
+
 app.use(errorHandler);
 
 app.listen(port, () => {
