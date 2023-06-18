@@ -119,6 +119,7 @@ const authController = {
     async login(req, res, next){
 
         //1. validate user input  ...by joi library
+        console.log("rechedd");
 
         const userLoginSchema = Joi.object({
             username: Joi.string().min(5).max(30).required(), 
@@ -141,6 +142,7 @@ const authController = {
             user = await User.findOne({username: username}) ;
 
             if(!user){
+                console.log("reched2");
                 const error = {
                     status: 401,
                     message: 'Invalid username'
@@ -197,7 +199,7 @@ const authController = {
         //res
         const userDto = new UserDTO(user);
 
-        return res.status(200).json({userDto, auth: true});
+        return res.status(200).json({user: userDto, auth: true});
     },
 
 
